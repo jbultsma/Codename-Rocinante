@@ -13,13 +13,14 @@ namespace Rocinante.Controllers
     {
         public IActionResult Index()
         {
-            JoobleDAL j = new JoobleDAL();
-            ViewBag.Text = j.CallJooble();
-            
-
-            return View(j);
+            return View();
         }
-
+        public IActionResult Results(string keywords, string location)
+        {
+            JoobleDAL j = new JoobleDAL();
+            List<Job> jobs = j.CallJooble(keywords, location);
+            return View(jobs);
+        }
         public IActionResult Privacy()
         {
             return View();
