@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Rocinante.Models;
 
 namespace Rocinante.Data
 {
@@ -12,5 +13,6 @@ namespace Rocinante.Data
             : base(options)
         {
         }
+        public DbSet<Rocinante.Models.Job> Job { get; set; }
     }
 }

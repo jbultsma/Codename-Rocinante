@@ -7,4 +7,8 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
-@ViewBag.text
+<form asp-action="Results">
+    KeyWord: <input name="keywords" type="text" />
+    Location: <input name="location" type="text" />
+    <input type="submit" />
+</form>
