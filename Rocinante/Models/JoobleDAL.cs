@@ -10,52 +10,42 @@ namespace Rocinante.Models
 {
     public class JoobleDAL
     {
-        string url = "https://jooble.org/api/";
-        string key = "d6b2d219-1285-4613-869a-372e9e5b6ad2";
-
-        public string CallJooble()
+        public List<Job> CallJooble(string location, string keywords)
         {
-            var url = "https://jooble.org/api/";
-            var key = "d6b2d219-1285-4613-869a-372e9e5b6ad2";
+            var url = Secret.Url;
+            var key = Secret.APIkey;
             //  create request object
             WebRequest request = HttpWebRequest.Create(url + key);
             //set http method
             request.Method = "POST";
             //set content type
             request.ContentType = "application/x-www-form-urlencoded";
+
             //create request writer
             var writer = new StreamWriter(request.GetRequestStream());
+            string requestFormat = string.Format("{{\"keywords\":\"{0}\",\"location\":\"{1}\"}}", location, keywords);
             //write request body
-            writer.Write("{ keywords: 'it', location: 'Bern'}");
+            writer.Write(requestFormat);
             //close writer
             writer.Close();
             //get response reader
             var response = request.GetResponse();
             var reader = new StreamReader(response.GetResponseStream());
-            string APIText = reader.ReadToEnd();
+            var APIText = reader.ReadToEnd();
+            JToken token = JToken.Parse(APIText);
 
-            return APIText;
+            List<JToken> ts = token["jobs"].ToList();
+
+            List<Job> jobs = new List<Job>();
+
+            foreach (JToken t in ts)
+            {
+                Job a = new Job(t);
+                jobs.Add(a);
+            }
+
+            return jobs;
         }
 
-        // Method to search and create list of recipes
-        //public static List<Job> GetJob(string keywords, string location)
-        //{
-        //    // Return APICall with search parameters as a string
-        //    string APIText = GetJob(keywords, location);
-
-        //    List<Job> jobs = new List<Job>();
-
-        //    // Create JToken to access API and a list to searchthe results
-        //    JToken t = JToken.Parse(APIText);
-        //    List<JToken> results = t["jobs"].ToList();
-
-        //    foreach (JToken job in results)
-        //    {
-        //        Job j = new Job(job);
-        //        jobs.Add(j);
-        //    }
-
-        //    return jobs;
-        //}
     }
 }
