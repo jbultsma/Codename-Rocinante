@@ -13,6 +13,6 @@ namespace Rocinante.Data
             : base(options)
         {
         }
-        public DbSet<Rocinante.Models.Job> Job { get; set; }
+        public virtual DbSet<Job> Job { get; set; }
     }
 }
