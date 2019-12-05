@@ -9,19 +9,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.JobId)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Snippet)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Link)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Company)
@@ -29,40 +20,36 @@
             <th>
                 @Html.DisplayNameFor(model => model.Updated)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Snippet)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.JobId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Location)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Snippet)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Link)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Company)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Updated)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.JobId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.JobId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.JobId">Delete</a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                <a href="@Html.DisplayFor(modelItem => item.Link)">@Html.DisplayFor(modelItem => item.Title)</a>
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Updated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Snippet)
+            </td>
+            <td>
+                <a asp-action="AddToTracker" asp-route-id="@item.JobId" asp-route-title="@item.Title" asp-route-snippet="@item.Snippet" asp-route-company="@item.Company">Add To Job Tracker</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>
