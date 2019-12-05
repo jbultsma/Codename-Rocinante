@@ -30,6 +30,7 @@ namespace Rocinante.Models
         public virtual IdentityUser User { get; set; }
         [Required]
         public string UserId { get; set; }
+        public virtual ICollection<Activiy> activities { get; set; } = new List<Activiy>();
         public Job()
         {
         }
