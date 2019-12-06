@@ -12,14 +12,21 @@ namespace Rocinante.Data
     {
         public static List<Job> jobList = new List<Job>();
 
-        public ApplicationDbContext()
-        {
-        }
+        //public ApplicationDbContext()
+        //{
+        //    DbContextOptionsBuilder optionsBuilder= new DbContextOptionsBuilder();
+        //    optionsBuilder.UseSqlServer(@"Server=DESKTOP-95NNO4H\\SQLEXPRESS;Database=Rocinante;");
+        //}
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
         public virtual DbSet<Job> Job { get; set; }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=DESKTOP-95NNO4H\\SQLEXPRESS;Database=Rocinante;");
+        //}
     }
 }
