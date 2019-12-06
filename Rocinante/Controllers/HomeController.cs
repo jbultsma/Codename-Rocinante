@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
@@ -13,12 +14,15 @@ namespace Rocinante.Controllers
     
     public class HomeController : Controller
     {
-        ApplicationDbContext db = new ApplicationDbContext();
+       readonly ApplicationDbContext db;
 
         public static List<Job> jobs = new List<Job>();
         JoobleDAL j = new JoobleDAL();
-        
 
+        public HomeController(ApplicationDbContext _db)
+        {
+            db = _db;
+        }
         public IActionResult Index()
         {
             return View();
@@ -26,17 +30,23 @@ namespace Rocinante.Controllers
         public IActionResult Results(string keywords, string location)
         {
             JoobleDAL j = new JoobleDAL();
-            List<Job> jobs = j.CallJooble(keywords, location);
+            jobs = j.CallJooble(keywords, location);
             return View(jobs);
         }
 
-        public IActionResult AddToTracker(string JobId)
+        public IActionResult AddToTracker(string jobId)
         {
-            foreach (Job item  in jobs)
-            {
-                db.Job.Add(item);
-                db.SaveChanges();
+            Job jb = jobs.FirstOrDefault(x => x.JobId == jobId);
+            if (jb != null)
+            {                
+                jb.UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+               
+                jb.Id = Guid.NewGuid().ToString();
+                    db.Job.Add(jb);
+                    db.SaveChanges();               
             }
+                
+            
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Privacy()
