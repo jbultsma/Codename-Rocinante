@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Snippet)
             </td>
             <td>
-                <a asp-action="AddToTracker" asp-route-id="@item.JobId" asp-route-title="@item.Title" asp-route-snippet="@item.Snippet" asp-route-company="@item.Company">Add To Job Tracker</a>
+                <a asp-action="AddToTracker" asp-route-jobId="@item.JobId">Add To Job Tracker</a>
             </td>
         </tr>
         }
