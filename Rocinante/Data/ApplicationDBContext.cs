@@ -11,6 +11,11 @@ namespace Rocinante.Data
     public class ApplicationDbContext : IdentityDbContext
     {
         public static List<Job> jobList = new List<Job>();
+
+        public ApplicationDbContext()
+        {
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
