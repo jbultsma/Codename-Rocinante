@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Rocinante.Models
 {
-    public class Activiy
+    public class Activity
     {
         public int Id { get; set; }
         public DateTime ActivityDate { get; set; }
