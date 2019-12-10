@@ -26,29 +26,28 @@ namespace Rocinante.Controllers
         public async Task<IActionResult> Index()
         {
             var loggedInUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            List<Job> jobs = _context.Job.ToList();
             var jobList = _context.Job.Where(x => x.UserId == loggedInUser);
 
             return View(jobList);
         }
 
-        
+
         public IActionResult AddActivity(string id)
         {
-            ViewBag.id = id;
-            return View(id);
+            ViewData["JobId"] = id;
+            return View();
         }
-        
-        public IActionResult AddActivity(Activity act)
+        [HttpPost]
+        public async Task<IActionResult> AddActivity([Bind("ActivityDate,Action,JobId")] Activity activity)
         {
-            ViewBag.id = act;
             if (ModelState.IsValid)
             {
-                _context.Activity.Add(act);
-                _context.SaveChanges();
-               return RedirectToAction(nameof(Details), new { id = act.JobId });
+                _context.Add(activity);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            return View();
+            ViewData["JobId"] = new SelectList(_context.Job, "Id", "Id", activity.JobId);
+            return View(activity);
         }
         // GET: Jobs/Details/5
         public async Task<IActionResult> Details(string id)
