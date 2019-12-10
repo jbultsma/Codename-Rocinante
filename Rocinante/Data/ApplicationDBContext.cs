@@ -7,7 +7,7 @@ using Rocinante.Models;
 
 namespace Rocinante.Data
 {
-   
+
     public class ApplicationDbContext : IdentityDbContext
     {
         public static List<Job> jobList = new List<Job>();
@@ -23,6 +23,7 @@ namespace Rocinante.Data
         {
         }
         public virtual DbSet<Job> Job { get; set; }
+        public DbSet<Activity> Activity { get; set; }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{

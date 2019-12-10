@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,9 +25,31 @@ namespace Rocinante.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Job.ToListAsync());
+            var loggedInUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            List<Job> jobs = _context.Job.ToList();
+            var jobList = _context.Job.Where(x => x.UserId == loggedInUser);
+
+            return View(jobList);
         }
 
+        
+        public IActionResult AddActivity(string id)
+        {
+            ViewBag.id = id;
+            return View(id);
+        }
+        
+        public IActionResult AddActivity(Activity act)
+        {
+            ViewBag.id = act;
+            if (ModelState.IsValid)
+            {
+                _context.Activity.Add(act);
+                _context.SaveChanges();
+               return RedirectToAction(nameof(Details), new { id = act.JobId });
+            }
+            return View();
+        }
         // GET: Jobs/Details/5
         public async Task<IActionResult> Details(string id)
         {
