@@ -32,7 +32,7 @@ namespace Rocinante.Models
         //[Required]
         [ForeignKey("IdentityUser")]
         public string UserId { get; set; }
-        public virtual ICollection<Activiy> activities { get; set; } = new List<Activiy>();
+        public virtual ICollection<Activity> activities { get; set; } = new List<Activity>();
         public Job()
         {
         }
