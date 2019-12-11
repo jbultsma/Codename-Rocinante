@@ -46,8 +46,9 @@ namespace Rocinante.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["JobId"] = new SelectList(_context.Job, "Id", "Id", activity.JobId);
-            return View(activity);
+            //ViewData["JobId"] = new SelectList(_context.Job, "Id", "Id", activity.JobId);
+            //return View(activity);
+            return View();
         }
         // GET: Jobs/Details/5
         public async Task<IActionResult> Details(string id)
