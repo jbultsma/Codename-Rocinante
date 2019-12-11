@@ -1,9 +1,16 @@
-﻿@model IEnumerable<Rocinante.Models.Job>
+﻿
+@model IEnumerable<Rocinante.Models.Job>
 
 @{
-    ViewData["Title"] = "Results";
+    ViewData["Title"] = "Index";
 }
 
+<h1 class="text-center">My jobs</h1>
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    @Html.DisplayFor(modelItem => item.SavedDate)
+    </p>*@
 
 <div class="container">
     <div class="row">
@@ -16,6 +23,7 @@
                         <p>@item.Company</p>
                         <p class="card-text">@Html.Raw(item.Snippet)</p>
                         <p><small class="text-muted">@item.Location</small></p>
+                        <p><small class="text-muted">@item.SavedDate</small></p>
                         @{
                             var days = int.Parse(DateTime.Now.Subtract(Convert.ToDateTime(@item.Updated)).Days.ToString());
                             if (days == 0)
@@ -35,7 +43,10 @@
                                 <p><small class="text-muted">Posted  @days days ago</small></p>
                             }
                         }
-                        <a asp-action="AddToTracker" asp-route-jobId="@item.JobId" class="btn btn-primary">Add To Job Tracker</a>
+
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary">Delete</a>
                     </div>
                 </div>
 
