@@ -4,52 +4,48 @@
     ViewData["Title"] = "Results";
 }
 
-<h1>Results</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Location)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Company)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Updated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Snippet)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+
+<div class="container">
+    <div class="row">
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                <a href="@Html.DisplayFor(modelItem => item.Link)">@Html.DisplayFor(modelItem => item.Title)</a>
+            <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4">
+                <div class="card-group shadow" style="width: 20rem">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="@item.Link)">@item.Title</a></h5>
+                        <p>@item.Company</p>
+                        <p class="card-text">@Html.Raw(item.Snippet)</p>
+                        <p><small class="text-muted">@item.Location</small></p>
+                        @{
+                            var days = int.Parse(DateTime.Now.Subtract(Convert.ToDateTime(@item.Updated)).Days.ToString());
+                            if (days == 0)
+                            {
+                                <p><small class="text-muted">Posted  To day</small></p>
+                            }
+                            else if (days == 1)
+                            {
+                                <p><small class="text-muted">Posted yesterday</small></p>
+                            }
+                            else if (days >= 31)
+                            {
+                                <p><small class="text-muted">Posted +31 days ago</small></p>
+                            }
+                            else
+                            {
+                                <p><small class="text-muted">Posted  @days days ago</small></p>
+                            }
+                        }
+                        <a asp-action="AddToTracker" asp-route-jobId="@item.JobId" class="btn btn-primary">Add To Job Tracker</a>
+                    </div>
+                </div>
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Company)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Updated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Snippet)
-            </td>
-            <td>
-                <a asp-action="AddToTracker" asp-route-jobId="@item.JobId">Add To Job Tracker</a>
-            </td>
-        </tr>
+            </div>
+
+
+
         }
-    </tbody>
-</table>
+
+    </div>
+    <div class="clearfix visible-md"></div>
+</div>
+

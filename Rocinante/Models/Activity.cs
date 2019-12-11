@@ -12,7 +12,8 @@ namespace Rocinante.Models
         public int Id { get; set; }
         public DateTime ActivityDate { get; set; }
         public string Action { get; set; }
-        public virtual Job job { get; set; }
+        public string Comment { get; set; }
+        // public virtual Job job { get; set; }
         [ForeignKey("job")]
         public string JobId { get; set; }
     }
