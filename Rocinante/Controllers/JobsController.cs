@@ -58,7 +58,7 @@ namespace Rocinante.Controllers
                 return NotFound();
             }
 
-            var job = await _context.Job
+            var job = await _context.Job.Include( y => y.activities)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (job == null)
             {
