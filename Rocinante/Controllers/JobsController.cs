@@ -23,7 +23,7 @@ namespace Rocinante.Controllers
 
         // GET: Jobs
         [Authorize]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var loggedInUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var jobList = _context.Job.Where(x => x.UserId == loggedInUser);
@@ -38,7 +38,7 @@ namespace Rocinante.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddActivity([Bind("ActivityDate,Action,JobId")] Activity activity)
+        public async Task<IActionResult> AddActivity([Bind("ActivityDate,Action,Comment,JobId")] Activity activity)
         {
             if (ModelState.IsValid)
             {
