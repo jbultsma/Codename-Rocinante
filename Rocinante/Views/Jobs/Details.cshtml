@@ -4,72 +4,37 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+    <h1>@Html.DisplayFor(model => model.Company)</h1>
 
 <div>
-    <h4>Job</h4>
+    <h3>@Html.DisplayFor(model => model.Title)</h3>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
+    <dl class="row">                
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Location)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Location)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Snippet)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Snippet)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Link)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Link)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Company)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Company)
-        </dd>
-        <dt class = "col-sm-2">
+        </dd>       
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.SavedDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.SavedDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Updated)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Updated)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Result)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Result)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
+        
     </dl>
 </div>
 <h3>Activities</h3>
@@ -80,6 +45,7 @@
         <th>Date</th>
         <th>Comment</th>
         <th>Action</th>
+        <th>Comment</th>
 
     </tr>
     @foreach (var item in Model.activities)
@@ -88,12 +54,11 @@
             <td>@item.ActivityDate</td>
             <td>@item.Comment</td>
             <td>@item.Action</td>
-
         </tr>
     }
 </table>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index" asp-controller="Activities" asp-route-id="@Model.Id">Vew activities</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+    <a asp-action="Index" asp-controller="Activities" asp-route-id="@Model.Id">Vew activities</a>
     <a asp-action="Index">Back to List</a>
 </div>
