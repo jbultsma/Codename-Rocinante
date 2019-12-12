@@ -75,9 +75,10 @@
 <h3>Activities</h3>
 <a class="btn btn-success" asp-action="AddActivity" asp-controller="Jobs" asp-route-id="@Model.Id">Add Activity</a>
 
-<table>
+<table class="table table-bordered table-striped table-sm">
     <tr>
         <th>Date</th>
+        <th>Comment</th>
         <th>Action</th>
 
     </tr>
@@ -85,6 +86,7 @@
     {
         <tr>
             <td>@item.ActivityDate</td>
+            <td>@item.Comment</td>
             <td>@item.Action</td>
 
         </tr>

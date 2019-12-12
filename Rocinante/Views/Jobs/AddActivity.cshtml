@@ -14,13 +14,25 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ActivityDate" class="control-label"></label>
-                <input asp-for="ActivityDate" class="form-control" />
+                <input type="date" asp-for="ActivityDate" class="form-control" />
                 <span asp-validation-for="ActivityDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Action" class="control-label"></label>
-                <input asp-for="Action" class="form-control" />
+                <select asp-for="Action" class="form-control">
+                    <option value="Applied">Applied</option>
+                    <option value="Interview">Phone Interview</option>
+                    <option value="In-person Interview">In-person Interview</option>
+                    <option value="Additional Interview">Additional Interview</option>
+                    <option value="Hired">Hired</option>
+                    <option value="Not Hired">Not Hired</option>
+                </select>
                 <span asp-validation-for="Action" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Comment" class="control-label"></label>
+                <textarea asp-for="Comment" class="form-control" rows="10"></textarea>
+                <span asp-validation-for="Comment" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="hidden" value="@ViewBag.JobId" asp-for="JobId" name="JobId">
