@@ -22,7 +22,7 @@ namespace Rocinante.Controllers
         }
 
         // GET: Jobs
-        [Authorize]
+        [Authorize(Roles = "Student")]
         public IActionResult Index()
         {
             var loggedInUser = User.FindFirstValue(ClaimTypes.NameIdentifier);
