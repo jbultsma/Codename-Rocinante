@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<Rocinante.Models.Job>
 
+
 @{
     ViewData["Title"] = "Results";
 }
@@ -13,9 +14,11 @@
                 <div class="card-group shadow" style="width: 20rem">
                     <div class="card-body">
                         <h5 class="card-title"><a href="@item.Link)">@item.Title</a></h5>
+                        <h5 class="text-info font-italic">(@item.Result)</h5>
                         <p>@item.Company</p>
                         <p class="card-text">@Html.Raw(item.Snippet)</p>
                         <p><small class="text-muted">@item.Location</small></p>
+
                         @{
                             var days = int.Parse(DateTime.Now.Subtract(Convert.ToDateTime(@item.Updated)).Days.ToString());
                             if (days == 0)
@@ -26,16 +29,29 @@
                             {
                                 <p><small class="text-muted">Posted yesterday</small></p>
                             }
-                            else if (days >= 31)
+                            else if (days >= 30)
                             {
-                                <p><small class="text-muted">Posted +31 days ago</small></p>
+                                <p><small class="text-muted">Posted 30+ days ago</small></p>
                             }
                             else
                             {
                                 <p><small class="text-muted">Posted  @days days ago</small></p>
                             }
                         }
-                        <a asp-action="AddToTracker" asp-route-jobId="@item.JobId" class="btn btn-primary">Add To Job Tracker</a>
+                        @{
+                            string jb = ViewBag.jb;
+                            if (item.IsTracked == true)
+                            {
+                                <p><small class="text-muted text-success">@item.Result</small></p>                               
+                                <a asp-action="DetailsJob" asp-route-Id="@item.JobId" asp-controller="Jobs" class="btn btn-success">Details</a>
+                            }
+                            else
+                            {
+                                <a asp-action="AddToTracker" asp-route-jobId="@item.JobId" class="btn btn-primary">Add To Job Tracker</a>
+
+                            }
+                        }
+                        @*<a asp-action="AddToTracker" asp-route-jobId="@item.JobId" class="btn btn-primary">Add To Job Tracker</a>*@
                     </div>
                 </div>
 

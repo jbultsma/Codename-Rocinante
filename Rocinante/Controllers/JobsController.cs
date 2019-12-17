@@ -44,14 +44,20 @@ namespace Rocinante.Controllers
             {
                 _context.Add(activity);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Details), new { id = activity.JobId });
-                         }
-            //ViewData["JobId"] = new SelectList(_context.Job, "Id", "Id", activity.JobId);
-            //return View(activity);
-            //return RedirectToAction(nameof(Details), new { id = activity.JobId });
+                return RedirectToAction(nameof(UpdateJob), new { id = activity.JobId, Results = activity.Action });
+            }
+
             return RedirectToAction("Results", "Home");
 
             //  return View();
+        }
+        public IActionResult UpdateJob(String id, string Results)
+        {
+            var jobDetail = _context.Job.FirstOrDefault(x => x.Id == id);
+            jobDetail.Result = Results;
+            _context.Job.Update(jobDetail);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Details), new { id = jobDetail.Id });
         }
         // GET: Jobs/Details/5
         public async Task<IActionResult> Details(string id)
