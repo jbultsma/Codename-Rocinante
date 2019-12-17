@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Rocinante.Data;
@@ -15,6 +16,9 @@ namespace Rocinante.Controllers
     
     public class HomeController : Controller
     {
+
+        public readonly UserManager<IdentityRole> idenityRole;
+        public readonly UserManager<IdentityUser> userManager; 
        readonly ApplicationDbContext db;
 
         public static List<Job> jobs = new List<Job>();
@@ -22,8 +26,9 @@ namespace Rocinante.Controllers
 
         public HomeController(ApplicationDbContext _db)
         {
+            //if (idenityRole.ro)
             db = _db;
-        }
+        }  
         public IActionResult Index()
         {
             return View();
