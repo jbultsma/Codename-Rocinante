@@ -19,7 +19,9 @@
             <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4">
                 <div class="card-group shadow" style="width: 20rem">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="@item.Link)">@item.Title</a></h5>
+                        @*<h5 class="card-title"><a href="@item.Link)">@item.Title</a></h5>*@
+                        <h5 class="card-title">@item.Title</h5>
+                        <h5 class="text-info font-italic">(@item.Result)</h5>
                         <p>@item.Company</p>
                         <p class="card-text">@Html.Raw(item.Snippet)</p>
                         <p><small class="text-muted">@item.Location</small></p>
