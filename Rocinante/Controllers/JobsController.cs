@@ -20,7 +20,7 @@ namespace Rocinante.Controllers
         {
             _context = context;
         }
-
+        //(Roles = "Student")
         // GET: Jobs
         [Authorize]
         public IActionResult Index()
