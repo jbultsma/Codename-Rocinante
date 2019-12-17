@@ -20,7 +20,7 @@ namespace Rocinante.Controllers
         {
             _context = context;
         }
-
+        //(Roles = "Student")
         // GET: Jobs
         [Authorize]
         public IActionResult Index()
@@ -49,7 +49,7 @@ namespace Rocinante.Controllers
             //ViewData["JobId"] = new SelectList(_context.Job, "Id", "Id", activity.JobId);
             //return View(activity);
             //return RedirectToAction(nameof(Details), new { id = activity.JobId });
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Results", "Home");
 
             //  return View();
         }
