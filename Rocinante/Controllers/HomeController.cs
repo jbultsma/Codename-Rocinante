@@ -17,8 +17,8 @@ namespace Rocinante.Controllers
     public class HomeController : Controller
     {
 
-        public readonly UserManager<IdentityRole> idenityRole;
-        public readonly UserManager<IdentityUser> userManager; 
+        public readonly UserManager<ApplicationUser> idenityRole;
+        public readonly UserManager<ApplicationUser> userManager; 
        readonly ApplicationDbContext db;
 
         public static List<Job> jobs = new List<Job>();
