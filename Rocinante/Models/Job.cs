@@ -32,6 +32,7 @@ namespace Rocinante.Models
         public string Result { get; set; }
         [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
+        public bool IsTracked;
         public virtual ICollection<Activity> activities { get; set; } = new List<Activity>();
         public Job()
         {

@@ -33,11 +33,21 @@ namespace Rocinante.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Results(string keywords, string location)
         {
+
             JoobleDAL j = new JoobleDAL();
             jobs = j.CallJooble(keywords, location);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            foreach (var item in jobs)
+            {
+                if (db.Job.Where(x => x.JobId == item.JobId & x.UserId == userId).Count() > 0)
+                {
+                    item.IsTracked = true;
+                }
+            }
+
             return View(jobs);
         }
         [Authorize]
