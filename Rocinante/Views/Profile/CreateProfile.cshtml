@@ -1,0 +1,71 @@
+﻿
+@model Rocinante.ViewModels.CreateProfileViewModel
+@{
+    ViewData["Title"] = "CreateProfile";
+}
+
+<h1>Your Profile</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form enctype="multipart/form-data" asp-action="CreateProfile" method="post">
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactEmail"></label>
+                <input asp-for="ContactEmail" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactPhone"></label>
+                <input asp-for="ContactPhone" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="City"></label>
+                <input asp-for="City" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Photo" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-12">
+                    <div class="custom-file">
+                        <input asp-for="Photo" class="form-control custom-file-input" />
+                        <label class="custom-file-label">Upload Photo...</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-12">
+                    <div class="custom-file">
+                        <input asp-for="Resume" class="form-control custom-file-input" />
+                        <label class="custom-file-label">Upload Resume...</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="MakeProfilePublic"></label> <br />
+                <input asp-for="MakeProfilePublic" type="radio" value="true" /> Yes <br />
+                <input asp-for="MakeProfilePublic" type="radio" value="false" checked="checked" /> No <br />
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+
+            @section Scripts {
+                <script>
+                    $(document).ready(function () {
+                        $('.custom-file-input').on("change", function () {
+                            var fileName = $(this).val().split("\\").pop();
+                            $(this).next('.custom-file-label').html(fileName);
+                        });
+                    });
+                </script>
+            }
+        </form>
+    </div>
+</div>

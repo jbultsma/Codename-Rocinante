@@ -30,7 +30,7 @@ namespace Rocinante.Models
         public string Updated { get; set; }
         [Display(Name = "Job status")]
         public string Result { get; set; }
-        [ForeignKey("IdentityUser")]
+        [ForeignKey("ApplicationUser")]
         public string UserId { get; set; }
         public virtual ICollection<Activity> activities { get; set; } = new List<Activity>();
         public Job()
