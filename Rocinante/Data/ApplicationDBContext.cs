@@ -8,7 +8,7 @@ using Rocinante.Models;
 namespace Rocinante.Data
 {
 
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public static List<Job> jobList = new List<Job>();
 
