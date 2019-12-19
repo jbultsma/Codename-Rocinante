@@ -4,50 +4,50 @@
     ViewData["Title"] = "Details";
 }
 
-    <h1>@Html.DisplayFor(model => model.Company)</h1>
+   
 
-<div>
-    <h3>@Html.DisplayFor(model => model.Title)</h3>
-    <hr />
-    <dl class="row">                
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Location)
-        </dd>       
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.SavedDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.SavedDate)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Updated)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Updated)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Result)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Result)
-        </dd>
-        
-    </dl>
-</div>
-<h3>Activities</h3>
-<a class="btn btn-success" asp-action="AddActivity" asp-controller="Jobs" asp-route-id="@Model.Id">Add Activity</a>
+    <div>
+        <h5>@Html.DisplayFor(model => model.Company)</h5>
+        <h6>@Html.DisplayFor(model => model.Title)</h6>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Location)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SavedDate)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SavedDate)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Updated)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Updated)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Result)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Result)
+            </dd>
+
+        </dl>
+    </div>
+<hr />
+<h3>Activities List</h3>
+
 
 <table class="table table-bordered table-striped table-sm">
     <tr>
         <th>Date</th>
         <th>Comment</th>
         <th>Action</th>
-        <th>Comment</th>
-
-    </tr>
+         </tr>
     @foreach (var item in Model.activities)
     {
         <tr>
@@ -57,8 +57,8 @@
         </tr>
     }
 </table>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-    <a asp-action="Index" asp-controller="Activities" asp-route-id="@Model.Id">Vew activities</a>
-    <a asp-action="Index">Back to List</a>
+<div> 
+    <a class="btn btn-success" asp-action="AddActivity" asp-controller="Jobs" asp-route-id="@Model.Id">Add Activity</a>
+    @*<a class="btn btn-primary" asp-action="Index" asp-controller="Activities" asp-route-id="@Model.Id">Vew activities</a>*@
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
 </div>
