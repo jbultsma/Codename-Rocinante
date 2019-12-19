@@ -15,12 +15,6 @@ namespace Rocinante.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Contact Email Address")]
-        public string ContactEmail { get; set; }
-
-        [Display(Name = "Contact Phone Number")]
-        public string ContactPhone { get; set; }
-
         [Display(Name = "Photo")]
         public string PhotoPath { get; set; }
 
