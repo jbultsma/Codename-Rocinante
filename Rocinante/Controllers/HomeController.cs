@@ -22,7 +22,6 @@ namespace Rocinante.Controllers
        readonly ApplicationDbContext db;
 
         public static List<Job> jobs = new List<Job>();
-        JoobleDAL j = new JoobleDAL();
 
         public HomeController(ApplicationDbContext _db)
         {
