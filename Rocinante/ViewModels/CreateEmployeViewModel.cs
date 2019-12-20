@@ -1,26 +1,38 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Rocinante.Models
+namespace Rocinante.ViewModels
 {
-    public class ApplicationUser : IdentityUser
+    public class CreateEmployeViewModel
     {
+        public string Username { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Phone]
+        [Display(Name = "Phone number")]
+        public string PhoneNumber { get; set; }
+
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Photo")]
         public string PhotoPath { get; set; }
 
-        [Display(Name = "Resume")]
         public string ResumePath { get; set; }
+
+        [Display(Name = "Update Photo")]
+        public string Photo { get; set; }
+
+        [Display(Name = "Update Resume")]
+        public string Resume { get; set; }
 
         public string City { get; set; }
 

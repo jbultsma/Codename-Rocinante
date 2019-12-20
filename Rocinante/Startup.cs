@@ -63,6 +63,11 @@ namespace Rocinante
                 app.UseHsts();
             }
 
+            app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
+
+
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();

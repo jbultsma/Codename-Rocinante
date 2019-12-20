@@ -1,0 +1,115 @@
+﻿@model Rocinante.Areas.Identity.Pages.Account.Manage.IndexModel
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<body class="profile-page">
+
+    <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile">
+                            <div class="avatar">
+                                <img src="~/Photos/e7a59ad8-1c4d-485e-a87b-b66362b1f50a_MMMMMM.jpg" class="rounded-circle" alt="Cinque Terre" img-responsive style="width: 400px">
+                            </div>
+
+
+                            <div class="name">
+                                <h3 class="title"></h3>
+                                <h6>C# .NET Developer</h6>
+                                <h2></h2>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#pablo" class="btn btn-just-icon btn-link btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description text-center">
+                    <p>
+                        Adaptable professional with 5+ years of experience in financial analysis and reporting, risk management,
+                        and newly acquired C#/.NET programming skills is aiming to achieve a career where I can continually
+                        leverage my passion for problem-solving, creativity and technical work.
+                    </p>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <i class="material-icons"></i>
+                                    C#
+                                </li>
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <i class="material-icons"></i>
+                                    ASP.NET
+                                </li>
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <i class="material-icons"></i>
+                                    HTML
+                                </li>
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <i class="material-icons"></i>
+                                    CSS
+                                </li>
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <i class="material-icons"></i>
+                                    JavaScript
+                                </li>
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <i class="material-icons"></i>
+                                    Bootstrap
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile-tabs">
+                            <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <a class="nav-link active" role="tab" data-toggle="tab">
+                                        <i class="material-icons"></i>
+                                        Resume
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <a class="nav-link active" role="tab" data-toggle="tab">
+                                        <i class="material-icons"></i>
+                                        LinkedIn
+                                    </a>
+                                </li>
+                                <li class="nav-item" style="margin-left: 6px">
+                                    <a class="nav-link active" role="tab" data-toggle="tab">
+                                        <i class="material-icons"></i>
+                                        GitHub
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
