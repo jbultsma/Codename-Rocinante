@@ -1,0 +1,18 @@
+﻿#big-text {
+    font-size: 62px;
+    margin: 20px;
+    color: darkorange;
+}
+
+#big-text1 {
+    font-size: 32px;
+    margin: 20px;
+    color: green;
+}
+
+.jumbotron {
+    background-repeat: repeat-y;
+    background-size: cover;
+    min-height: 400px;
+    color: #ffffff;
+}
