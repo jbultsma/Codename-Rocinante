@@ -1,4 +1,4 @@
-# Codename-Rocinante
+# Tech Tracker
 A C# .NET CORE Web application using MVC, a SQL Database, and multiple API's for our Final Projects
 
 This repo is a group effort from Moise Ingabire, Maricela Rivera, and Joshua Bultsma. 
